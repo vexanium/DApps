@@ -1,0 +1,92 @@
+@font-face {
+  font-family: 'digi';
+  src: url('digi.ttf') format('truetype');
+}
+@keyframes floating {
+    from { transform: translate(0,  0px); }
+    63%  { transform: translate(0, 15px); }
+    to   { transform: translate(0, -0px); }    
+}
+@keyframes forward {
+    from { transform: translate(0, -9px); transform: scale(0.45)}
+    63%  { transform: translate(0, -6px); transform: scale(0.63) }
+    to   { transform: translate(0, 0px); transform: scale(1) }    
+}
+body {
+	background: #f9f9f9;
+}
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#logo {
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  position: fixed; 
+  width: 300px;
+  z-index: 9;
+  top: 60px;
+}
+table {
+  z-index: 9;
+	width: 300px;
+  bottom: 30px;
+  position: fixed;
+	border-collapse: separate;
+  animation-name: forward;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+td {
+	margin: 3px 3px 0;
+	border-radius: 3px;
+}
+#rhead {
+	width: auto;
+	height: 120px;
+	margin: 6px;
+	color: #fff;
+	font-family: 'digi';
+	font-size: 33px;
+	background: #222;
+	border-radius: 3px;
+}
+.eye{
+	margin: 30px;
+	font-size: 36px;
+	display: inline-block;
+}
+#dots {
+	font-size: 63px;
+	margin: 24px 30px 0 0;
+	display: inline-block;
+}
+#nopen {
+	font-size: 24px;
+	margin: 24px 0 0 0;
+	display: inline-block;
+}
+#gotin { padding: 9px 0; }
+#rbody {
+	width: 150px;
+   margin: 30px auto;
+   display:block;
+}
+.blocks {
+	border: 1px solid #222;
+	background-color: #fff;
+	box-shadow: 0 1px 1px #ccc;
+}
+.hands {
+	width: 30px;
+}
+.feet {
+	width: 30px;
+	height: 30px;
+}
