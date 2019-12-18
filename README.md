@@ -5,7 +5,7 @@ Vexanium Decentralized Apps (DApps) Core, Basic, and Samples
 
 ## DApps Index
 List of this repo's DApps  
-1. [Basic DApp (Simple)](basic-simple)
+1. [Basic DApp (Simple)](basic-simple)  
    Pure Javascript
 2. [Basic DApp (Stylish)](basic-stylish)  
    CSS3, Bootstrap, JQuery 
