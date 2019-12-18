@@ -17,10 +17,12 @@ Include them inside the ```head``` tag
 </html>
 ```  
 Next, you're gonna write javascripts inside the ```body``` tag
+
 2. Call the Vexanium Plugin    
 ```js
 ScatterJS.plugins( Vexanium() );
 ```  
+
 3. Setup the Mainnet  
 ```js
 var network = ScatterJS.Network.fromJson({
@@ -31,6 +33,7 @@ var network = ScatterJS.Network.fromJson({
 	protocol:'http'
 });
 ```
+
 3. Connect to Wallet    
 ```js
 ScatterJS.connect('Basic DApp (Simple)',{network}).then(connected => {
@@ -38,20 +41,15 @@ ScatterJS.connect('Basic DApp (Simple)',{network}).then(connected => {
 		alert('Please Open Your VexWallet');
 		return;
 	}
-	ScatterJS.login().then(id => {
-		if(!id) return;
-		logButt.style = 'display:none;';
-		gotin.style = 'display:block;';
-		usrTxt.innerHTML = id.accounts[0].name;
-	});
 });
 ```  
+
 5. Login and get the Wallet Name    
 ```js
-	ScatterJS.login().then(id => {
-		if(!id) return;
-		usrTxt.innerHTML = id.accounts[0].name;
-	});
+ScatterJS.login().then(id => {
+	if(!id) return;
+	usrTxt.innerHTML = id.accounts[0].name;
+});
 ```
 
 Done. Those are the basic codes, you can check the complete scripts inside [index.html](index.html)
