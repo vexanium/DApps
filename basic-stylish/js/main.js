@@ -1,4 +1,5 @@
 ScatterJS.plugins( Vexanium() );
+const appname = document.title;
 const network = ScatterJS.Network.fromJson({
 	blockchain: bc('vex'),
 	chainId:'f9f432b1851b5c179d2091a96f593aaed50ec7466b74f89301f957a83e56ce1f',
@@ -39,7 +40,7 @@ function login() {
 	zero();
 	setInterval(loading, 900);
 	try{
-		ScatterJS.connect('Basic DApp (Stylish)',{network}).then(connected => {
+		ScatterJS.connect(appname,{network}).then(connected => {
 			if(!connected) {
 				gotin = false;
 				$('.tog').addClass('d-none');
@@ -58,7 +59,8 @@ function login() {
 				$('#logout').on('click touch', function(){
 					logout();
 				});
-				const vexnet = ScatterJS.eos(network, Eos);
+				//const vexnet = ScatterJS.eos(network, Eos);
+				const vexnet = VexNet(network);
 				//console.log(vexnet);
 				vexnet.getAccount({
 					account_name: account
