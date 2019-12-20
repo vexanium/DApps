@@ -13,7 +13,10 @@ let gotin = false;
 let dots = 0;
 $('.eye').text('|');
 setTimeout(function(){	
-	connect();
+	//test android
+	//if(DappJsBridge!=undefined){ $('#login').text(DappJsBridge.mAccount); }	
+	$('#login').text(DappJsBridge.mAccount);
+	//connect();
 },3000);
 $('#login').on('click touch', function(){
 	connect();
@@ -96,6 +99,3 @@ function logout() {
 		console.log(e);
 	}
 }
-	//test android
-	//if(DappJsBridge!=undefined){ $('#login').text(DappJsBridge.mAccount); }	
-	$('#login').text(DappJsBridge.mAccount);
