@@ -7,16 +7,19 @@ const network = ScatterJS.Network.fromJson({
 	port:8080,
 	protocol:'http'
 });
+let balance = '0.0000 VEX';
+let opened = false;
 let gotin = false;
 let dots = 0;
 $('.eye').text('|');
 setTimeout(function(){
-	login();
+	connect();
 },3000);
 $('#login').on('click touch', function(){
-	login();
+	connect();
 });
 function zero() {
+	balance = '0.0000 VEX';
 	$('#dots').text('.');
 	dots = 0;
 }
@@ -32,7 +35,7 @@ function sleepy() {
 	$('#login').prop('disabled', false);
 	$('#intro').text('Welcome');
 }
-function login() {
+function connect() {
 	$('.tog').addClass('d-none');
 	$('#dots,#login').removeClass('d-none');
 	$('#login').prop('disabled', true);
@@ -42,41 +45,43 @@ function login() {
 	try{
 		ScatterJS.connect(appname,{network}).then(connected => {
 			if(!connected) {
-				gotin = false;
 				$('.tog').addClass('d-none');
 				$('#login,#nopen').removeClass('d-none');
 				setTimeout(sleepy, 4500);
 				return;
 			}
-			ScatterJS.login().then(id => {
-				if(!id) return;
-				gotin = true;
-				const account = id.accounts[0].name;
-				let balance = '0.0000 VEX';
-				$('.tog').addClass('d-none');
-				$('#gotin,#logout').removeClass('d-none');
-				$('#user').text(account);
-				$('#logout').on('click touch', function(){
-					logout();
-				});
-				//const vexnet = ScatterJS.eos(network, Eos);
-				const vexnet = VexNet(network);
-				//console.log(vexnet);
-				vexnet.getAccount({
-					account_name: account
-				}).then(info => {
-					//console.log(info);
-					balance = info.core_liquid_balance?info.core_liquid_balance:balance;
-					setTimeout(function(){
-						$('#intro').text(account);
-						$('#user').text(balance);
-					}, 900);
-				});
+			opened = true;
+			login();
+		});
+	} catch (e) {
+		console.log(e);
+	}
+}
+function login() {
+	try{
+		ScatterJS.login().then(id => {
+			if(!id) return;
+			gotin = true;
+			const account = id.accounts[0].name;
+			$('.tog').addClass('d-none');
+			$('#gotin,#logout').removeClass('d-none');
+			$('#user').text(account);
+			$('#logout').on('click touch', function(){
+				logout();
 			});
-			if (gotin) {
-				$('.tog').addClass('d-none');
-				$('#gotin,#logout').removeClass('d-none');
-			}
+			//const vexnet = ScatterJS.eos(network, Eos);
+			const vexnet = VexNet(network);
+			//console.log(vexnet);
+			vexnet.getAccount({
+				account_name: account
+			}).then(info => {
+				//console.log(info);
+				balance = info.core_liquid_balance?info.core_liquid_balance:balance;
+				setTimeout(function(){
+					$('#intro').text(account);
+					$('#user').text(balance);
+				}, 900);
+			});
 		});
 	} catch (e) {
 		console.log(e);
