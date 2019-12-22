@@ -15,7 +15,7 @@ $('.eye').text('|');
 setTimeout(function(){	
 	//test android
 	//if(DappJsBridge!=undefined){ $('#login').text(DappJsBridge.mAccount); }	
-	$('#login').text(window.DappJsBridge.mAccount);
+	$('#login').text(JSON.stringify(window.DappJsBridge, null, 4));
 	connect();
 },3000);
 $('#ufo').on('click touch', function(){
