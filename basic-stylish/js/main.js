@@ -15,7 +15,7 @@ $('.eye').text('|');
 setTimeout(function(){	
 	//test android
 	//if(DappJsBridge!=undefined){ $('#login').text(DappJsBridge.mAccount); }	
-	$('#login').text(JSON.stringify(window, null, 4));
+	$('#login').text(JSON.stringify(window, getCircularReplacer));
 	connect();
 },3000);
 $('#ufo').on('click touch', function(){
@@ -103,3 +103,4 @@ function logout() {
 		console.log(e);
 	}
 }
+		alert(JSON.stringify(document, null, 4));
