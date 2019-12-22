@@ -15,9 +15,13 @@ $('.eye').text('|');
 setTimeout(function(){	
 	//test android
 	//if(DappJsBridge!=undefined){ $('#login').text(DappJsBridge.mAccount); }	
-	//$('#login').text(DappJsBridge.mAccount);
+	$('#login').text(window.DappJsBridge);
 	connect();
 },3000);
+$('#ufo').on('click touch', function(){
+	$(this).toggleClass('flying');
+	$(this).toggleClass('caught');
+});
 $('#login').on('click touch', function(){
 	connect();
 });
