@@ -103,4 +103,3 @@ function logout() {
 		console.log(e);
 	}
 }
-		alert(JSON.parse(window.DappJsBridge));
