@@ -8,9 +8,23 @@
     to   { transform: translate(0, -0px); }    
 }
 @keyframes forward {
-    from { transform: translate(0, -9px); transform: scale(0.45)}
-    63%  { transform: translate(0, -6px); transform: scale(0.63) }
-    to   { transform: translate(0, 0px); transform: scale(1) }    
+    from { transform: scale(0.63)}
+    72%  { transform: scale(0.72) }
+    to   { transform: scale(1) }    
+}
+@keyframes accross {
+    from { transform: translate3D(-1500px, 360px, 39px); }
+    63%  { transform: translate3D(-72px, 36px, 36px); }
+    to   { transform: translate3D(36px, -36px, 15px); }    
+}
+@keyframes hovering {
+    from { transform: rotateZ(5.4deg); }
+    25%  { transform: rotateZ(8.1deg); }
+    30%  { transform: rotateZ(9.0deg); }
+    50%  { transform: rotateZ(10.8deg); }
+    70%  { transform: rotateZ(9.0deg); }
+    75%  { transform: rotateZ(8.1deg); }
+    to   { transform: rotateZ(5.4deg); }    
 }
 body {
 	background: #f9f9f9;
@@ -31,6 +45,29 @@ body {
   width: 300px;
   z-index: 9;
   top: 60px;
+}
+#ufo { 
+  position: fixed;
+  cursor: pointer;
+  width: 27px;
+  z-index: 3;
+  right: 30px;
+  top: 30px;  
+}
+#ufo.flying { 
+  animation-name: accross;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+#ufo.caught { 
+  animation-name: hovering;
+  animation-duration: 3.6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  width: 180px;
+  right: unset;
+  top: 120px; 
 }
 table {
   z-index: 9;
