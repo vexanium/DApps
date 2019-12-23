@@ -100,4 +100,8 @@ function logout() {
 		console.log(e);
 	}
 }
-function aleAle(){ alert(alertTxt); }
+function aleAle(){
+	pe.getWalletWithAccount().then((res)=>{
+		alert(JSON.stringify(res));
+	});
+}
