@@ -100,4 +100,4 @@ function logout() {
 		console.log(e);
 	}
 }
-alert(alertTxt);
+function aleAle(){ alert(alertTxt); }
