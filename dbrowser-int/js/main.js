@@ -1,4 +1,5 @@
 ScatterJS.plugins( Vexanium() );
+const fromDappBrowser = navigator.userAgent=='VexWalletAndroid';
 const appname = document.title;
 const network = ScatterJS.Network.fromJson({
 	blockchain: bc('vex'),
@@ -11,9 +12,9 @@ let account;
 let balance = '0.0000 VEX';
 let dots = 0;
 $('.eye').text('|');
-//setTimeout(function(){	
-//	connect();
-//},3000);
+setTimeout(function(){	
+	connect();
+},3000);
 $('#ufo').on('click touch', function(){
 	$(this).toggleClass('flying');
 	$(this).toggleClass('caught');
@@ -46,45 +47,62 @@ function connect() {
 	zero();
 	setInterval(loading, 900);
 	try{
-		ScatterJS.connect(appname,{network}).then(connected => {
-			if(!connected) {
-				$('.tog').addClass('d-none');
-				$('#login,#nopen').removeClass('d-none');
-				setTimeout(sleepy, 4500);
-				return;
-			}
-			login();
-		});
+		if(!fromDappBrowser){
+			ScatterJS.connect(appname,{network}).then(connected => {
+				if(!connected) {
+					notConnected();
+					return;
+				}
+				login();
+			});
+		} else {
+			pe.getWalletWithAccount().then((res)=>{
+				if(!res) {
+					notConnected();
+					return;
+				}
+				account = res.data.account;
+				onConnected();
+			});	
+		}
 	} catch (e) {
 		console.log(e);
 	}
+}
+function notConnected(){
+	$('.tog').addClass('d-none');
+	$('#login,#nopen').removeClass('d-none');
+	setTimeout(sleepy, 4500);
+}
+function onConnected(){
+	$('.tog').addClass('d-none');
+	$('#gotin,#logout').removeClass('d-none');
+	$('#user').text(account);
+	$('#logout').on('click touch', function(){
+		logout();
+	});
+	getinfo(account);
 }
 function login() {
 	try{
 		ScatterJS.login().then(id => {
 			if(!id) return;
 			account = id.accounts[0].name;
-			$('.tog').addClass('d-none');
-			$('#gotin,#logout').removeClass('d-none');
-			$('#user').text(account);
-			$('#logout').on('click touch', function(){
-				logout();
-			});
-			getinfo(account);
+			onConnected();
 		});
 	} catch (e) {
 		console.log(e);
 	}
 }
-function getinfo(acc) {
+function getinfo() {
 	try {
 		const vexnet = VexNet(network);
 		vexnet.getAccount({
-			account_name: acc
+			account_name: account
 		}).then(info => {
 			balance = info.core_liquid_balance?info.core_liquid_balance:balance;
 			setTimeout(function(){
-				$('#intro').text(acc);
+				$('#intro').text(account);
 				$('#user').text(balance);
 			}, 900);
 		});	
@@ -94,15 +112,9 @@ function getinfo(acc) {
 }
 function logout() {
 	try {
-		ScatterJS.logout();
+		if(!fromDappBrowser) ScatterJS.logout();
 		sleepy();
 	} catch (e) {
 		console.log(e);
 	}
-}
-function aleAle(){
-	pe.getWalletWithAccount().then((res)=>{
-		alertTxt += '\nwal: ' + jsonToStr(res);
-	});
-	alert(alertTxt);
 }

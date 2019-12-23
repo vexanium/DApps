@@ -1,4 +1,4 @@
-var fromDappBrowser = navigator.appName.match(/Android/i);
+var fromDappBrowser = navigator.userAgent=='VexWalletAndroid';
 const getCircularReplacer = () => {
   const seen = new WeakSet();
   return (key, value) => {
