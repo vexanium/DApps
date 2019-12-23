@@ -13,7 +13,7 @@ const getCircularReplacer = () => {
     return value;
   };
 };
-let alertTxt = 'nav: ' + jsonToStr(navigator.appName);
+let alertTxt = 'nav: ' + jsonToStr(navigator.appCodeName);
 function jsonToStr(obj,circular=false){
 	return circular?JSON.stringify(obj, getCircularReplacer):JSON.stringify(obj, null, 4);
 }

@@ -11,15 +11,15 @@ let account;
 let balance = '0.0000 VEX';
 let dots = 0;
 $('.eye').text('|');
-setTimeout(function(){	
-	connect();
-},3000);
+//setTimeout(function(){	
+//	connect();
+//},3000);
 $('#ufo').on('click touch', function(){
 	$(this).toggleClass('flying');
 	$(this).toggleClass('caught');
 });
 $('#login').on('click touch', function(){
-	connect();
+	//connect();
 });
 function zero() {
 	balance = '0.0000 VEX';
