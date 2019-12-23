@@ -7,15 +7,11 @@ const network = ScatterJS.Network.fromJson({
 	port:8080,
 	protocol:'http'
 });
+let account;
 let balance = '0.0000 VEX';
-let opened = false;
-let gotin = false;
 let dots = 0;
 $('.eye').text('|');
 setTimeout(function(){	
-	//test android
-	//if(DappJsBridge!=undefined){ $('#login').text(DappJsBridge.mAccount); }	
-	//$('#login').text(JSON.stringify(window, getCircularReplacer));
 	connect();
 },3000);
 $('#ufo').on('click touch', function(){
@@ -40,13 +36,13 @@ function sleepy() {
 	$('.tog').addClass('d-none');
 	$('#login,#eyes').removeClass('d-none');
 	$('#login').prop('disabled', false);
+	$('.eye').text('X');
 	$('#intro').text('Welcome');
 }
 function connect() {
 	$('.tog').addClass('d-none');
 	$('#dots,#login').removeClass('d-none');
 	$('#login').prop('disabled', true);
-	$('.eye').text('X');
 	zero();
 	setInterval(loading, 900);
 	try{
@@ -57,7 +53,6 @@ function connect() {
 				setTimeout(sleepy, 4500);
 				return;
 			}
-			opened = true;
 			login();
 		});
 	} catch (e) {
@@ -68,28 +63,31 @@ function login() {
 	try{
 		ScatterJS.login().then(id => {
 			if(!id) return;
-			gotin = true;
-			const account = id.accounts[0].name;
+			account = id.accounts[0].name;
 			$('.tog').addClass('d-none');
 			$('#gotin,#logout').removeClass('d-none');
 			$('#user').text(account);
 			$('#logout').on('click touch', function(){
 				logout();
 			});
-			//const vexnet = ScatterJS.eos(network, Eos);
-			const vexnet = VexNet(network);
-			//console.log(vexnet);
-			vexnet.getAccount({
-				account_name: account
-			}).then(info => {
-				//console.log(info);
-				balance = info.core_liquid_balance?info.core_liquid_balance:balance;
-				setTimeout(function(){
-					$('#intro').text(account);
-					$('#user').text(balance);
-				}, 900);
-			});
+			getinfo(account);
 		});
+	} catch (e) {
+		console.log(e);
+	}
+}
+function getinfo(acc) {
+	try {
+		const vexnet = VexNet(network);
+		vexnet.getAccount({
+			account_name: acc
+		}).then(info => {
+			balance = info.core_liquid_balance?info.core_liquid_balance:balance;
+			setTimeout(function(){
+				$('#intro').text(acc);
+				$('#user').text(balance);
+			}, 900);
+		});	
 	} catch (e) {
 		console.log(e);
 	}
@@ -97,7 +95,6 @@ function login() {
 function logout() {
 	try {
 		ScatterJS.logout();
-		gotin = false;
 		sleepy();
 	} catch (e) {
 		console.log(e);

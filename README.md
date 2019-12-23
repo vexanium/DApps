@@ -1,7 +1,7 @@
-![](basic-stylish/img/showcase.jpg)
-
 # DApps
 Vexanium Decentralized Apps (DApps) Core, Basic, and Samples
+
+![](basic-stylish/img/showcase.jpg)
 
 ## Introduction
 

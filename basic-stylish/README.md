@@ -13,10 +13,11 @@ Include them inside the ```head``` tag
 </head>
 <body>
 	...
+	<script src="js/main.js" type="text/javascript"></script>
 </body>
 </html>
 ```  
-Next, you're gonna write javascripts inside the ```body``` tag
+Create ```main.js``` file with basic codes as below:
 
 2. Call the Vexanium Plugin    
 ```js
@@ -61,5 +62,7 @@ vexnet.getAccount({
 	balance = info.core_liquid_balance?info.core_liquid_balance:balance;
 });
 ```
+> If you have don't have any balance, core_liquid_balance does not exist,
+that's why we need to do precheck and set default value as '0.0000 VEX' 
 
-Done. Those are the basic codes, you can check the complete scripts inside [index.html](index.html)
+Done. Those are the basic codes, you can check the complete scripts inside [js/main.js](js/main.js)
