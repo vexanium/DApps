@@ -20,7 +20,7 @@ $('#ufo').on('click touch', function(){
 	$(this).toggleClass('caught');
 });
 $('#login').on('click touch', function(){
-	//connect();
+	connect();
 });
 function zero() {
 	balance = '0.0000 VEX';
