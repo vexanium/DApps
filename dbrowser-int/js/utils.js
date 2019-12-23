@@ -1,5 +1,3 @@
-window.pushActionResult = pushActionResult;
-window.getWalletWithAccount = getWalletWithAccount;
 var fromDappBrowser = navigator.appName.match(/Android/i);
 const getCircularReplacer = () => {
   const seen = new WeakSet();
@@ -13,9 +11,7 @@ const getCircularReplacer = () => {
     return value;
   };
 };
-let alertTxt = 'nav: ' + jsonToStr(navigator.appCodeName);
+let alertTxt = 'nav: ' + jsonToStr(navigator.userAgent);
 function jsonToStr(obj,circular=false){
-	return circular?JSON.stringify(obj, getCircularReplacer):JSON.stringify(obj, null, 4);
+	return circular?JSON.stringify(obj, getCircularReplacer):JSON.stringify(obj, null, 3);
 }
-function pushActionResult(k,v){ alertTxt += '\npar: ' + jsonToStr(v); }
-function getWalletWithAccount(detail){ alertTxt += '\ngwa: ' + jsonToStr(detail);  }

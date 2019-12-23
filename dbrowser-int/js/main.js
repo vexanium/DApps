@@ -102,6 +102,7 @@ function logout() {
 }
 function aleAle(){
 	pe.getWalletWithAccount().then((res)=>{
-		alert(JSON.stringify(res));
+		alertTxt += '\nwal: ' + jsonToStr(res);
 	});
+	alert(alertTxt);
 }
