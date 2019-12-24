@@ -1,6 +1,6 @@
 # DApp Browser Integrated
 Integrate your app to dapp browser for compability with VexWallet Android.  
-> You need to put your codes online in order to test it out in dapp browser on your android device.
+> You need to put your codes online in order to test it out in dapp browser on your android device.  
 > Don't worry, this's still compatible perfectly with VexWallet Windows/MacOS.
 
 1. Include the Core Javascripts
@@ -25,6 +25,7 @@ Create ```main.js``` file with basic codes as below:
 2. Call the Vexanium Plugin    
 ```js
 ScatterJS.plugins( Vexanium() );
+```
 
 3. Detect your app run form dapp browser or not    
 ```js
