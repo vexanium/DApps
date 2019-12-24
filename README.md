@@ -59,5 +59,5 @@ Go to each lesson folder, and try it out
    Integrate to dapp browser for VexWalletAndroid compability
    
 ## Coda
-We'll wait for your Creativity. Submit your DApps at VexWallet Android.
+We'll wait for your Creativity. Submit your DApps at VexWallet Android.  
 ![](img/happycoding.png)
