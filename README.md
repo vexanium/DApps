@@ -47,8 +47,10 @@ As explained before, it's different with Android, you need to browse your app in
 and require **PocketVexJS** to connect to the wallet. So if you want your app to be compatible with
 **VexWalletAndroid** as well, add this javascript: ```pocket.vex.min.js```
 
+Let's follow the lessons below step by step for better understanding
+
 ## Lessons
-Let's follow the step by step lessons below for better understanding    
+Go to each lesson folder, and try it out    
 1. [Basic DApp (Simple)](basic-simple)  
    Pure Javascript (No VexWalletAndroid compability yet)  
 2. [Basic DApp (Stylish)](basic-stylish)  
@@ -58,4 +60,4 @@ Let's follow the step by step lessons below for better understanding
    
 ## Coda
 We'll wait for your Creativity. Submit your DApps at VexWallet Android.
-![](happycoding.png)
+![](img/happycoding.png)
