@@ -1,5 +1,5 @@
-# DApp Basic (Stylish)
-Basic Scatter integrated DApp development using **CSS3, Bootstrap, JQuery**.
+# DApp Browser Integrated
+Integrate your app to dapp browser for compability with VexWalletAndroid.
 
 1. Include the Core Javascripts
 Include them inside the ```head``` tag
@@ -10,6 +10,7 @@ Include them inside the ```head``` tag
 	<script src="js/vex.min.js" type="text/javascript"></script>
 	<script src="js/scatterjs-core.min.js" type="text/javascript"></script>
 	<script src="js/scatterjs-plugin-vexjs.min.js" type="text/javascript"></script>
+	<script src="js/pocket.vex.min.js" type="text/javascript"></script>
 </head>
 <body>
 	...
