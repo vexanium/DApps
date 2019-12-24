@@ -97,9 +97,7 @@ function login() {
 function getinfo() {
 	try {
 		const vexnet = VexNet(network);
-		vexnet.getAccount({
-			account_name: account
-		}).then(info => {
+		vexnet.getAccount(account).then(info => {
 			balance = info.core_liquid_balance?info.core_liquid_balance:balance;
 			setTimeout(function(){
 				$('#intro').text(account);

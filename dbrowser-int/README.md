@@ -1,5 +1,7 @@
 # DApp Browser Integrated
-Integrate your app to dapp browser for compability with VexWalletAndroid.
+Integrate your app to dapp browser for compability with VexWallet Android.  
+> You need to put your codes online in order to test it out in dapp browser on your android device.
+> Don't worry, this's still compatible perfectly with VexWallet Windows/MacOS.
 
 1. Include the Core Javascripts
 Include them inside the ```head``` tag
@@ -23,9 +25,13 @@ Create ```main.js``` file with basic codes as below:
 2. Call the Vexanium Plugin    
 ```js
 ScatterJS.plugins( Vexanium() );
+
+3. Detect your app run form dapp browser or not    
+```js
+const fromDappBrowser = navigator.userAgent=='VexWalletAndroid';
 ```  
 
-3. Setup the Mainnet  
+5. Setup the Mainnet  
 ```js
 var network = ScatterJS.Network.fromJson({
 	blockchain: bc('vex'),
@@ -36,25 +42,41 @@ var network = ScatterJS.Network.fromJson({
 });
 ```
 
-3. Connect to Wallet    
+6. Connect to Wallet    
 ```js
-ScatterJS.connect('Basic DApp (Simple)',{network}).then(connected => {
-	if(!connected) {
-		alert('Please Open Your VexWallet');
-		return;
-	}
-});
-```  
+if(!fromDappBrowser){
+	ScatterJS.connect(appname,{network}).then(connected => {
+		if(!connected) {
+			notConnected();
+			return;
+		}
+		login();
+	});
+} else {
+	pe.getWalletWithAccount().then((res)=>{
+		if(!res) {
+			notConnected();
+			return;
+		}
+		account = res.data.account;
+		onConnected();
+	});	
+}
+```
+> You can get wallet name immediately from dapp browser,
+as in Android you login first then enter dapp browser.
+In contrary, you need to login after connect in Desktop.
 
-5. Login and get the Wallet Name    
+7. Login and get the Wallet Name    
 ```js
 ScatterJS.login().then(id => {
 	if(!id) return;
 	usrTxt.innerHTML = id.accounts[0].name;
 });
 ```
+> This's not being called if using dapp browser
 
-6. Connect to Mainnet and get the Wallet Balance    
+8. Connect to Mainnet and get the Wallet Balance    
 ```js
 const vexnet = VexNet(network);
 vexnet.getAccount({
@@ -67,3 +89,25 @@ vexnet.getAccount({
 that's why we need to do precheck and set default value as '0.0000 VEX' 
 
 Done. Those are the basic codes, you can check the complete scripts inside [js/main.js](js/main.js)
+
+## Additional
+You can call ```vexnet.getAccount()``` in different way from the example above.    
+Other than ```balance``` you can call any information fetched by ```vexnet.getAccount()```.  
+Here's the details:  
+```js
+vexnet.getAccount(account).then(res => {
+	balance = res.core_liquid_balance?res.core_liquid_balance:balance;
+	used_cpu = res.cpu_limit.used;
+	available_cpu = res.cpu_limit.available;
+	max_cpu = res.cpu_limit.max;
+	cpu_weight = res.cpu_weight;
+	used_net = res.net_limit.used;
+	available_net = res.net_limit.available;
+	max_net = res.net_limit.max;
+	net_weight = res.net_weight;
+	ram_quota = res.ram_quota;
+	ram_usage = res.ram_usage;
+	//or simply log to console the result object for more details
+	console.log(res);
+});
+```

@@ -15,10 +15,10 @@ as it is lightweight and easy to configure.
 
 Hold up the excitement, let's take a look on how it works:
 ![](img/flow.jpg)
-Basically your **DApp** needs to connect to our **VexWallet**.
-Use **ScatterJS** to connect to **Windows/MacOS Wallet**,
-and **PocketVexJS** to **Android Wallet** via **dapp browser** in it.
-Then make use of **VexNet** method to do any transactions to **Vexanium Blockchain Network**.
+Basically your **DApp** needs to connect to our **VexWallet**.  
+Use **ScatterJS** to connect to **Windows/MacOS Wallet**,  
+and **PocketVexJS** to **Android Wallet** via **dapp browser** in it.  
+Then make use of **VexNet** method to do any transactions to **Vexanium Blockchain Network**.  
 That's all, that's the main concept.
 
 ## Core JS
@@ -47,13 +47,15 @@ As explained before, it's different with Android, you need to browse your app in
 and require **PocketVexJS** to connect to the wallet. So if you want your app to be compatible with
 **VexWalletAndroid** as well, add this javascript: ```pocket.vex.min.js```
 
-Let's follow the step by step lessons below for better understanding.
-
 ## Lessons
-List of this repo's DApps  
+Let's follow the step by step lessons below for better understanding    
 1. [Basic DApp (Simple)](basic-simple)  
-   Pure Javascript
+   Pure Javascript (No VexWalletAndroid compability yet)  
 2. [Basic DApp (Stylish)](basic-stylish)  
-   CSS3, Bootstrap, JQuery 
+   CSS3, Bootstrap, JQuery (No VexWalletAndroid compability yet)   
 3. [DApp Browser Integrated](dbrowser-int)  
    Integrate to dapp browser for VexWalletAndroid compability
+   
+## Coda
+We'll wait for your Creativity. Submit your DApps at VexWallet Android.
+![](happycoding.png)

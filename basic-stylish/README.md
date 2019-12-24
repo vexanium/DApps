@@ -37,9 +37,9 @@ var network = ScatterJS.Network.fromJson({
 
 3. Connect to Wallet    
 ```js
-ScatterJS.connect('Basic DApp (Simple)',{network}).then(connected => {
+ScatterJS.connect(appname,{network}).then(connected => {
 	if(!connected) {
-		alert('Please Open Your VexWallet');
+		notConnected();
 		return;
 	}
 });
