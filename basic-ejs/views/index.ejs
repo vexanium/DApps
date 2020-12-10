@@ -1,0 +1,49 @@
+<%- include ('_header'); %>
+
+<img src="img/bg.jpg" id="bg">
+	<div class="row h-100 justify-content-center align-items-center">
+		<img src="img/vex-logo.svg" id="logo">
+		<img src="img/ufo.png" id="ufo" class="flying">
+		<table>
+			<tr>
+				<td></td>
+				<td colspan="3" class="blocks">
+					<div id="rhead">
+						<div id="eyes" class="w-100 text-center tog">
+							<div class="eye">X</div>
+							<div class="eye">X</div>
+						</div>
+						<div id="dots" class="w-100 text-center tog d-none">.</div>
+						<div id="nopen" class="w-100 text-center tog d-none">
+							Please Open Your VexWallet
+						</div>
+						<div id="gotin" class="w-100 text-center tog d-none">
+							<span id="intro">Welcome</span>
+							<br><span id="user"></span>
+							<br>
+						</div>
+					</div>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="blocks hands"></td>
+				<td colspan="3" class="blocks">
+					<div id="rbody" class="h-100 justify-content-center align-items-center text-center">
+						<button id="login" class="btn btn-primary tog">Please Login</button>
+						<button id="logout" class="btn btn-danger tog d-none">Logout</button>
+					</div>
+				</td>
+				<td class="blocks hands"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="blocks feet"></td>
+				<td></td>
+				<td class="blocks feet"></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+
+<%- include ('_footer'); %>
