@@ -1,5 +1,5 @@
 # vdapp
-<H1>install vexaniumjs modul</H1>
+<H1>install modules</H1>
 <pre>$ npm install</pre>
 
 <H1>start app using port 3000</H1>
