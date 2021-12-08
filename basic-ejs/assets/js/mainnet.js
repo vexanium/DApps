@@ -1,5 +1,20 @@
+
+
 ScatterJS.plugins( Vexanium() );
-const fromDappBrowser = navigator.userAgent=='VexWalletAndroid';
+
+let details = navigator.userAgent;
+let regexp = /android|iphone|kindle|ipad/i;
+let isMobileDevice = regexp.test(details);
+let fromDappBrowser ='';
+
+if (isMobileDevice) {
+	console.log("Mobile Device");
+	  fromDappBrowser = navigator.userAgent=='VexWalletAndroid (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012)';
+} else {
+	console.log(" Desktop");
+	  fromDappBrowser = navigator.userAgent=='VexWalletAndroid';
+}
+
 const appname = document.title;
 const network = ScatterJS.Network.fromJson({
 	blockchain: bc('vex'),
